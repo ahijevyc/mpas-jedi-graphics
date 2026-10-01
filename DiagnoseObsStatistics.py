@@ -320,6 +320,12 @@ class DiagnoseObsStatistics:
       for rangeName, values in variants.items():
         maskedDiagnostics.setdefault(rangeName, values)
 
+    # 2D binVars with one of those vertical binVars as an axis (e.g. LatPrs2D) are level-resolved
+    # too, so they also skip the collection-time ranges
+    levelResolvedBinVarKeys |= {
+      name for name, axes in pconf.binVars2D.items()
+      if set(axes) & levelResolvedBinVarKeys}
+
     for (binVarKey, binMethodName), binMethod in binMethods.items():
       if binMethod.excludeDiag(diagName): continue
       if binMethod.excludeVariable(varName): continue

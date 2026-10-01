@@ -267,8 +267,12 @@ class DiagnoseModelStatistics():
         # restricting their range is redundant with the plot-time trim in
         # MultiDimBinMethodBase/BinValAxes2D), and only for variables actually indexed by model
         # level (vu.modDiagnosticVarNames are indexed by diagnostic-pressure level instead, so
-        # model-level bounds would not mean what they say for those).
+        # model-level bounds would not mean what they say for those). 2D binVars with one of those
+        # as an axis (e.g. ModelLatLev2D) are level-resolved too.
         levelResolvedBinVarKeys = {vu.modVarLev, vu.modVarDiagPrs}
+        levelResolvedBinVarKeys |= {
+          name for name, axes in pconf.binVars2D.items()
+          if set(axes) & levelResolvedBinVarKeys}
         isModelLevelIndexed = nDims == 2 and varName not in vu.modDiagnosticVarNames
 
         if isModelLevelIndexed:
