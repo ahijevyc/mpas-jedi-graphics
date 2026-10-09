@@ -316,6 +316,7 @@ class BinValAxes2D(MultiDimBinMethodBase):
         yVarIs = {}
         specialBinVars = [
           vu.obsVarPrs,
+          vu.modVarLev,
           vu.obsVarMCI,
           vu.obsVarOCI,
           vu.obsVarLogCI,
@@ -342,6 +343,7 @@ class BinValAxes2D(MultiDimBinMethodBase):
         pCoord = yVarIs[vu.obsVarPrs] or yVarIs[vu.modVarDiagPrs]
         yConfig['invert'] = pCoord
         if pCoord: yConfig['transform'] = 'Pressure'
+        if yVarIs[vu.modVarLev]: yConfig['transform'] = 'ModelLevel'
         if yVarIs[vu.obsVarMCI] or yVarIs[vu.obsVarOCI] or yVarIs[vu.obsVarLogCI]:
             yConfig['transform'] = 'CloudImpact'
 #        if yVarIs[vu.obsVarCldFracX] or yVarIs[vu.obsVarCldFracY]:
