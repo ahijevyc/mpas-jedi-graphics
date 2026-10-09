@@ -1393,9 +1393,9 @@ binLims2D[(vu.obsVarAlt, bu.noBinMethod)]['format'] = '{:.0f}'
 binLims2D[(vu.obsVarImpact, bu.noBinMethod)] = deepcopy(binLims2D[(vu.obsVarAlt, bu.noBinMethod)])
 
 binLims2D[(vu.modVarLev, bu.noBinMethod)] = {}
-binLims2D[(vu.modVarLev, bu.noBinMethod)]['start']  = 1
-binLims2D[(vu.modVarLev, bu.noBinMethod)]['stop']   = 56
-binLims2D[(vu.modVarLev, bu.noBinMethod)]['nsteps'] = 10
+binLims2D[(vu.modVarLev, bu.noBinMethod)]['start']  = 3
+binLims2D[(vu.modVarLev, bu.noBinMethod)]['stop']   = 53
+binLims2D[(vu.modVarLev, bu.noBinMethod)]['step']   = 5
 binLims2D[(vu.modVarLev, bu.noBinMethod)]['format'] = '{:.0f}'
 
 binLims2D[(vu.modVarDiagPrs, bu.noBinMethod)] = {}
